@@ -1,14 +1,4 @@
-﻿  main.cpp
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(301,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message : while compiling class template member function 'int structures::ArrayList<int>::getIndexOf(const T &)'
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message :         with
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message :         [
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message :             T=int
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message :         ]
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(260): message : see reference to function template instantiation 'int structures::ArrayList<int>::getIndexOf(const T &)' being compiled
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(260): message :         with
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(260): message :         [
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(260): message :             T=int
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(260): message :         ]
-C:\Users\Pocitac\source\repos\SemestrálnaPráca\SemestrálnaPráca\main.cpp(9): message : see reference to class template instantiation 'structures::ArrayList<int>' being compiled
-  SemestrálnaPráca.vcxproj -> C:\Users\Pocitac\source\repos\SemestrálnaPráca\Debug\SemestrálnaPráca.exe
+﻿  podiely_operacii.cpp
+C:\Users\Pocitac\source\repos\SemestrálnaPráca\SemestrálnaPráca\podiely_operacii.cpp(43,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Pocitac\source\repos\SemestrálnaPráca\SemestrálnaPráca\podiely_operacii.cpp(160,46): error C3867: 'structures::ArrayList<int &>::operator []': non-standard syntax; use '&' to create a pointer to member
+C:\Users\Pocitac\source\repos\SemestrálnaPráca\SemestrálnaPráca\podiely_operacii.cpp(164,47): error C3867: 'structures::LinkedList<int &>::operator []': non-standard syntax; use '&' to create a pointer to member
