@@ -222,7 +222,7 @@ void podiely_operacii::test_adt_queue(int* arr)
         }
 }
 
-void podiely_operacii::call_test_list()
+void podiely_operacii::call_test_list(int array_or_list)
 {
         int arr[MIL];
         int n = sizeof(arr) / sizeof(arr[0]);
@@ -248,11 +248,11 @@ void podiely_operacii::call_test_list()
         {
                 fill_array(arr, limits[i], 4);
                 shuffle_array(arr, n);
-                test_adt_list(arr);
+                test_adt_list(arr, array_or_list);
         }
 }
 
-void podiely_operacii::call_test_queue()
+void podiely_operacii::call_test_queue(int array_or_list)
 {
         int arr[MIL];
         int n = sizeof(arr) / sizeof(arr[0]);
@@ -277,13 +277,14 @@ void podiely_operacii::call_test_queue()
         {
                 fill_array(arr, limits[i], 3);
                 shuffle_array(arr, n);
-                test_adt_queue(arr);
+                test_adt_queue(arr, array_or_list);
         }
 }
 
 int podiely_operacii::metoda()
 {
-        call_test_list();
+        call_test_list(0);
+        call_test_list(1);
         call_test_queue();
         return 0;
 }
