@@ -252,7 +252,7 @@ void podiely_operacii::call_test_list(int array_or_list)
         }
 }
 
-void podiely_operacii::call_test_queue(int array_or_list)
+void podiely_operacii::call_test_queue()
 {
         int arr[MIL];
         int n = sizeof(arr) / sizeof(arr[0]);
@@ -277,7 +277,7 @@ void podiely_operacii::call_test_queue(int array_or_list)
         {
                 fill_array(arr, limits[i], 3);
                 shuffle_array(arr, n);
-                test_adt_queue(arr, array_or_list);
+                test_adt_queue(arr);
         }
 }
 
