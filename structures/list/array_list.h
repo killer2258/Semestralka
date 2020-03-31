@@ -72,8 +72,14 @@ namespace structures
         /// <summary> Odstrani zo zoznamu prvok na danom indexe. </summary>
         /// <param name = "index"> Index prvku. </param>
         /// <returns> Odstraneny prvok. </returns>
-        /// <exception cref="std::out_of_range"> Vyhodena, ak index nepatri do zoznamu. </exception>  
+        /// <exception cref="std::out_of_range"> Vyhodena, ak index nepatri do zoznamu. </exception>
         T removeAt(const int index) override;
+
+		T removeFirst() override;
+
+		T removeLast() override;
+
+		void set(int index, const T& data) override;
 
         /// <summary> Vrati index prveho vyskytu prvku v zozname. </summary>
         /// <param name = "data"> Prvok, ktoreho index sa hlada. </param>
@@ -92,6 +98,9 @@ namespace structures
         /// <returns> Iterator na koniec struktury. </returns>
         /// <remarks> Zabezpecuje polymorfizmus. </remarks>
         Iterator<T>* getEndIterator() const override;
+
+		void insertFirst(const T& data) override;
+
     private:
         /// <summary> Pole s datami. </summary>
         Array<T>* array_;
@@ -141,14 +150,14 @@ namespace structures
 
     template<typename T>
     inline ArrayList<T>::ArrayList() :
-        List(),
+        List<T>::List(),
         array_(new Array<T>(4)),
         size_(0)
     { }
 
     template<typename T>
     inline ArrayList<T>::ArrayList(const ArrayList<T>& other) :
-        List(),
+		List<T>::List(),
         array_(new Array<T>(*other.array_)),
         size_(other.size_)
     { }
@@ -238,6 +247,13 @@ namespace structures
         }
     }
 
+	template<typename T>
+	inline void ArrayList<T>::insertFirst(const T& data)
+	{
+		insert(data, 0);
+	}
+
+
     template<typename T>
     inline bool ArrayList<T>::tryRemove(const T& data)
     {
@@ -259,6 +275,25 @@ namespace structures
         size_--;
         return data;
     }
+
+	template<typename T>
+	inline T ArrayList<T>::removeFirst()
+	{
+		return removeAt(0);
+	}
+
+	template<typename T>
+	inline T ArrayList<T>::removeLast()
+	{
+		return removeAt(size_ - 1);
+	}
+
+	template<typename T>
+	inline void ArrayList<T>::set(int index, const T& data)
+	{
+		DSRoutines::rangeCheckExcept(index, size_, "Out of range");
+		(*array_)[index] = data;
+	}
 
     template<typename T>
     inline int ArrayList<T>::getIndexOf(const T& data)

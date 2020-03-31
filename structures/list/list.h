@@ -57,6 +57,8 @@ namespace structures
 		/// <remarks> Ak je ako index zadana hodnota poctu prvkov (teda prvy neplatny index), metoda insert sa sprava ako metoda add. </remarks>
 		virtual void insert(const T& data, const int index) = 0;
 		
+		virtual void insertFirst(const T& data) = 0;
+
 		/// <summary> Odstrani prvy vyskyt prvku zo zoznamu. </summary>
 		/// <param name = "data"> Odstranovany prvok. </param>
 		/// <returns> true, ak sa podarilo prvok zo zoznamu odobrat, false inak. </returns>
@@ -67,7 +69,13 @@ namespace structures
 		/// <returns> Odstraneny prvok. </returns>
 		/// <exception cref="std::out_of_range"> Vyhodena, ak index nepatri do zoznamu. </exception>  
 		virtual T removeAt(const int index) = 0;
-		
+
+		virtual T removeFirst() = 0;
+
+		virtual T removeLast() = 0;
+
+		virtual void set(int index, const T& data) = 0;
+
 		/// <summary> Vrati index prveho vyskytu prvku v zozname. </summary>
 		/// <param name = "data"> Prvok, ktoreho index sa hlada. </param>
 		/// <returns> Index prveho vyskytu prvku v zozname, ak sa prvok v zozname nenachadza, vrati -1. </returns>
@@ -85,6 +93,7 @@ namespace structures
 		/// <returns> Iterator na koniec struktury. </returns>
 		/// <remarks> Zabezpecuje polymorfizmus. </remarks>
 		virtual Iterator<T>* getEndIterator() const = 0;
+		
 	protected:
 		/// <summary> Konstruktor. </summary>
 		List();

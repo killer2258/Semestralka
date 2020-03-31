@@ -93,10 +93,18 @@ namespace structures
         /// <remarks> Ak je ako index zadana hodnota poctu prvkov (teda prvy neplatny index), metoda insert sa sprava ako metoda add. </remarks>
         void insert(const T& data, const int index) override;
 
+		void insertFirst(const T& data) override;
+
         /// <summary> Odstrani prvy vyskyt prvku zo zoznamu. </summary>
         /// <param name = "data"> Odstranovany prvok. </param>
         /// <returns> true, ak sa podarilo prvok zo zoznamu odobrat, false inak. </returns>
         bool tryRemove(const T& data) override;
+
+		T removeFirst() override;
+
+		T removeLast() override;
+
+		void set(int index, const T& data) override;
 
         /// <summary> Odstrani zo zoznamu prvok na danom indexe. </summary>
         /// <param name = "index"> Index prvku. </param>
@@ -202,7 +210,7 @@ namespace structures
 
     template<typename T>
     inline LinkedList<T>::LinkedList() :
-        List(),
+		List<T>::List(),
         size_(0),
         first_(nullptr),
         last_(nullptr)
@@ -311,6 +319,12 @@ namespace structures
         size_++;
     }
 
+	template<typename T>
+	inline void LinkedList<T>::insertFirst(const T& data)
+	{
+		insert(data, 0);
+	}
+
     template<typename T>
     inline bool LinkedList<T>::tryRemove(const T& data)
     {
@@ -322,39 +336,54 @@ namespace structures
         return true;
     }
 
+	template<typename T>
+	inline T LinkedList<T>::removeFirst()
+	{
+		return removeAt(0);
+	}
+
+	template<typename T>
+	inline T LinkedList<T>::removeLast()
+	{
+		return removeAt(size_);
+	}
+
+	template<typename T>
+	inline void LinkedList<T>::set(int index, const T& data)
+	{
+		DSRoutines::rangeCheckExcept(index, size_, "Out of Range");
+		LinkedListItem<T>* item = getItemAtIndex(index);
+		item->accessData() = data;
+	}
+
     template<typename T>
     inline T LinkedList<T>::removeAt(const int index)
     {
-        DSRoutines::rangeCheckExcept(index, size_, "Out of Range");
-        T result;
-        if (index == 0)
-        {
-            LinkedListItem<T>* newFirst = first_->getNext();
-            result = first_->accessData();
-            delete first_;
-            first_ = newFirst;
-
-            if (size_ <= 2)
-                last_ = first_;
-
-        }
-        else
-        {
-            LinkedListItem<T>* beforeRemoving = getItemAtIndex(index - 1);
-            beforeRemoving->setNext(beforeRemoving->getNext()->getNext());
-
-            result = beforeRemoving->getNext()->accessData();
-            delete beforeRemoving->getNext();
-
-            if (index == size_ - 1)
-                last_ = beforeRemoving;
-
-            if (size_ == 2)
-                first_ = last_;
-        }
-
-        size_--;
-        return result;
+		DSRoutines::rangeCheckExcept(index, size_, "Index out of range");
+		LinkedListItem<T>* delItem;
+		if (index == 0)
+		{
+			delItem = first_;
+			first_ = first_->getNext();
+			if (size_ == 1)
+			{
+				last_ = 0;
+			}
+		}
+		else
+		{
+			LinkedListItem<T>* previousItem = getItemAtIndex(index - 1);
+			delItem = previousItem->getNext();
+			previousItem->setNext(delItem->getNext());
+			if (last_ == delItem)
+			{
+				last_ = previousItem;
+			}
+		}
+		size_--;
+		T data = delItem->accessData();
+		delete delItem;
+		return data;
     }
 
     template<typename T>
