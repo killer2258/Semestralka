@@ -128,6 +128,8 @@
     <ClCompile Include="..\structures\structure.cpp" />
     <ClCompile Include="..\structures\vector\vector.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="podiely_operacii.cpp" />
+    <ClCompile Include="testArrayList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\structures\array\array.h" />
@@ -141,6 +143,8 @@
     <ClInclude Include="..\structures\structure.h" />
     <ClInclude Include="..\structures\structure_iterator.h" />
     <ClInclude Include="..\structures\vector\vector.h" />
+    <ClInclude Include="podiely_operacii.h" />
+    <ClInclude Include="testArrayList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

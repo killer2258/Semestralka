@@ -239,7 +239,7 @@ namespace structures
             if (size_ == array_->size())
                 enlarge();
 
-            Array<T>::copy(*array_, index, *array_, index + 1, array_->size() - index);
+            Array<T>::copy(*array_, index, *array_, index + 1, size_ - index);
 
             (*array_)[index] = data;
 

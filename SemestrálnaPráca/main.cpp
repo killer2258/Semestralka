@@ -1,3 +1,4 @@
+
 #include "../structures/list/array_list.h"
 #include "../structures/list/linked_list.h"
 #include "../structures/heap_monitor.h"
@@ -7,7 +8,13 @@
 
 int main() {
 	initHeapMonitor();
-	structures::ArrayList<int> newArray;
-	structures::LinkedList<int>* newLinkedList = new structures::LinkedList<int>;
-	test::call_test_list(newArray);
-}	
+	structures::ArrayList<int>* newArray;
+	//structures::LinkedList<int>* newLinkedList = new structures::LinkedList<int>;
+
+	test::call_test_list();
+
+
+	//TODO set a get - zle
+	//nahodne operacie - zle
+	//
+}
