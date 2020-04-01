@@ -46,7 +46,7 @@ namespace test {
 	int gen_number(int range)
 	{
 		srand(time(NULL));
-		return rand() % range;
+		return rand() % range + 1;
 	}
 
 	//test pre ADT zoznam
@@ -59,38 +59,39 @@ namespace test {
 		structures::List<int>* newList = new structures::ArrayList<int>;
 		for (int i = 0; i < MIL; i++)
 		{
-			cout << arr[i] << endl;
+			//cout << arr[i] << endl;
 			if (newList->size() == 0)
 			{
 				randIndex = 0;
 			}
 			else
 			{
-				randIndex = gen_number(newList->size());
+				randIndex = rand() % newList->size();
 			}
 
 			switch (arr[i]) {
 			case(1):
 				operation_no = gen_number(3);
+				cout << operation_no << endl;
 				switch (operation_no) {
-				case(0):
+				case(1):
 					//operacia_vloz_prvy(gen_number(range));
 					//cout << newList->size() << endl;
-					//cout << "insertFirst" << endl;
+					cout << "insertFirst" << endl;
 					newList->insertFirst(gen_number(10000));
 					break;
-				case(1):
+				case(2):
 					//operacia_vloz_posledny(gen_number(range));
 					//cout << newList->size() << endl;
-					//cout << "insertLast" << endl;
+					cout << "insertLast" << endl;
 					newList->add(gen_number(10000));
 					
 					break;
-				case(2):
+				case(3):
 					//operacia_vloz_na_index(gen_number(range), gen_number(range))
 					//cout << randIndex << endl;
 					//cout << newList->size() << endl;
-					//cout << "insertOn" << endl;
+					cout << "insertOn" << endl;
 					newList->insert(gen_number(10000), randIndex);
 					
 					break;
@@ -98,22 +99,41 @@ namespace test {
 				break;
 			case(2):
 				operation_no = gen_number(3);
+				cout << operation_no << endl;
 				switch (operation_no) {
-				case(0):
+				case(1):
 					//operacia_zrus_prvy();
-					//cout << "removeFirst" << endl;
+					if (newList->size() == 0)
+					{
+						cout << "chyba" << endl;
+						continue;
+					}
+					//cout << newList->size() << endl;
+					cout << "removeFirst" << endl;
 					newList->removeFirst();
 					
 					break;
-				case(1):
+				case(2):
 					//operacia_zrus_posledny();
-					//cout << "removeLast" << endl;
+					if (newList->size() == 0)
+					{
+						cout << "chyba" << endl;
+						continue;
+					}
+					//cout << newList->size() << endl;
+					cout << "removeLast" << endl;
 					newList->removeLast();
 					
 					break;
-				case(2):
+				case(3):
 					//operacia_zrus_na_indexe(gen_number(range));
-					//cout << "removeOn" << endl;
+					if (newList->size() == 0)
+					{
+						cout << "chyba" << endl;
+						continue;
+					}
+					//cout << newList->size() << endl;
+					cout << "removeOn" << endl;
 					newList->removeAt(randIndex);
 					
 					break;
@@ -121,35 +141,37 @@ namespace test {
 				break;
 			case(3):
 				operation_no = gen_number(2);
+				cout << operation_no << endl;
 				switch (operation_no) {
-				case(0):
+				case(1):
 					//operacia_spristupni(index);
 					
 					if (newList->size() == 0)
 					{
-						//cout << "chyba" << endl;
+						cout << "chyba" << endl;
 						continue;
 					}
-					//cout << "get" << endl;
-					newList[gen_number(randIndex + 1)];
+					cout << "get" << endl;
+					newList[(randIndex)];
 					
 					break;
-				case(1):
+				case(2):
 					//operacia_nastav(gen_number(range), gen_number(range));
 					if (newList->size() == 0)
 					{
-						//cout << "chyba" << endl;
+						cout << "chyba" << endl;
 						continue;
 					}
-					//cout << "set" << endl;
-					newList->set(gen_number(randIndex + 1), gen_number(5));
+					cout << "set" << endl;
+					newList->set(randIndex, gen_number(5));
 					
 					break;
 				}
 				break;
 			case(4):
+				cout << operation_no << endl;
 				//operacia_index_prvku
-				//cout << "getIndex" << endl;
+				cout << "getIndex" << endl;
 				newList->getIndexOf(gen_number(10000));
 				
 				break;
@@ -178,10 +200,11 @@ namespace test {
 
 	void call_test_list()
 	{
-		int* arr;
-		arr = new int[MIL];
-		structures::List<int>* newList = new structures::ArrayList<int>;
+		int arr[MIL];
+		
+
 		int n = sizeof(arr) / sizeof(arr[0]);
+		structures::List<int>* newList = new structures::ArrayList<int>;
 
 		//0 - vloz, 1 - zrus, 2 - nastav, 3 - index
 		int pomery[3][4] = {
@@ -210,7 +233,7 @@ namespace test {
 			cout << duration.count() << endl;
 		}
 		delete newList;
-		delete[] arr;
+
 	}
 
 	void call_test_queue()

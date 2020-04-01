@@ -1,5 +1,6 @@
 ﻿  podiely_operacii.cpp
 C:\Users\Pocitac\source\repos\SemestrálnaPráca\SemestrálnaPráca\podiely_operacii.cpp(48,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Pocitac\source\repos\SemestrálnaPráca\SemestrálnaPráca\podiely_operacii.cpp(230,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(301,27): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message : while compiling class template member function 'int structures::ArrayList<int>::getIndexOf(const T &)'
 C:\Users\Pocitac\source\repos\SemestrálnaPráca\structures\list\array_list.h(300): message :         with

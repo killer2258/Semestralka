@@ -13,8 +13,8 @@ int main() {
 
 	test::call_test_list();
 
-
-	//TODO set a get - zle
+	//TODO
+	//set a get - zle
 	//nahodne operacie - zle
-	//
+	//remove - zle
 }
