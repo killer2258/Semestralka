@@ -15,6 +15,5 @@ int main() {
 
 	//TODO
 	//set a get - zle
-	//nahodne operacie - zle
 	//remove - zle
 }

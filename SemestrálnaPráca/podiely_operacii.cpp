@@ -45,7 +45,6 @@ namespace test {
 	//vygeneruje rand cislo od 1 po range
 	int gen_number(int range)
 	{
-		srand(time(NULL));
 		return rand() % range + 1;
 	}
 
@@ -72,7 +71,6 @@ namespace test {
 			switch (arr[i]) {
 			case(1):
 				operation_no = gen_number(3);
-				cout << operation_no << endl;
 				switch (operation_no) {
 				case(1):
 					//operacia_vloz_prvy(gen_number(range));
@@ -93,13 +91,11 @@ namespace test {
 					//cout << newList->size() << endl;
 					cout << "insertOn" << endl;
 					newList->insert(gen_number(10000), randIndex);
-					
 					break;
 				}
 				break;
 			case(2):
 				operation_no = gen_number(3);
-				cout << operation_no << endl;
 				switch (operation_no) {
 				case(1):
 					//operacia_zrus_prvy();
@@ -140,8 +136,6 @@ namespace test {
 				}
 				break;
 			case(3):
-				operation_no = gen_number(2);
-				cout << operation_no << endl;
 				switch (operation_no) {
 				case(1):
 					//operacia_spristupni(index);
@@ -169,7 +163,6 @@ namespace test {
 				}
 				break;
 			case(4):
-				cout << operation_no << endl;
 				//operacia_index_prvku
 				cout << "getIndex" << endl;
 				newList->getIndexOf(gen_number(10000));
@@ -226,7 +219,8 @@ namespace test {
 		{
 			fill_array(arr, limits[i], 4);
 			shuffle_array(arr, n);
-			auto start = high_resolution_clock::now();
+			srand(time(NULL));
+			auto start = high_resolution_clock::now();			
 			test_adt_list(arr);
 			auto stop = high_resolution_clock::now();
 			auto duration = duration_cast<microseconds>(stop - start);
