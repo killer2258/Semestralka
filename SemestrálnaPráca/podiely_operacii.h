@@ -4,7 +4,7 @@
 #include "../structures/list/list.h"
 
 namespace test {
-	void shuffle_array(int arr[], int n);
+	void shuffle_array(int arr[]);
 	void fill_array(int* arr, int* limits, int amount);
 	int gen_number(int range);
 	void test_adt_list(int* arr); //arraylist - 0, linkedlist - 1
