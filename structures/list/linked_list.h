@@ -345,7 +345,7 @@ namespace structures
 	template<typename T>
 	inline T LinkedList<T>::removeLast()
 	{
-		return removeAt(size_);
+		return removeAt(size_ - 1);
 	}
 
 	template<typename T>
