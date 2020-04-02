@@ -128,8 +128,9 @@
     <ClCompile Include="..\structures\structure.cpp" />
     <ClCompile Include="..\structures\vector\vector.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="podiely_operacii.cpp" />
     <ClCompile Include="testArrayList.cpp" />
+    <ClCompile Include="testLinkedList.cpp" />
+    <ClCompile Include="testPriorityQueueArrayList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\structures\array\array.h" />
@@ -140,11 +141,23 @@
     <ClInclude Include="..\structures\list\linked_list.h" />
     <ClInclude Include="..\structures\list\list.h" />
     <ClInclude Include="..\structures\memory_routines.h" />
+    <ClInclude Include="..\structures\priority_queue\heap.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue_limited_sorted_array_list.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue_linked_list.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue_list.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue_sorted_array_list.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue_two_lists.h" />
+    <ClInclude Include="..\structures\priority_queue\priority_queue_unsorted_array_list.h" />
+    <ClInclude Include="..\structures\queue\explicit_queue.h" />
+    <ClInclude Include="..\structures\queue\implicit_queue.h" />
+    <ClInclude Include="..\structures\queue\queue.h" />
     <ClInclude Include="..\structures\structure.h" />
     <ClInclude Include="..\structures\structure_iterator.h" />
     <ClInclude Include="..\structures\vector\vector.h" />
-    <ClInclude Include="podiely_operacii.h" />
     <ClInclude Include="testArrayList.h" />
+    <ClInclude Include="testLinkedList.h" />
+    <ClInclude Include="testPriorityQueueArrayList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
