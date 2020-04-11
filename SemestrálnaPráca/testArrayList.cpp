@@ -21,9 +21,11 @@ namespace testArrayList {
 		random_shuffle(&arr[0], &arr[MIL]);
 	}
 
+	//vyplni pole, ako argumenty berie pointer na prvy prvok pola arr, pole "limitov", kde su ulozene pocty,
+	//kolkokrat sa ma podla zadanych percentazi vykonat jednotlive operacie.
 	void fill_array(int* arr, int* limits, int amount)
 	{
-
+		//zarazky, aby cyklus vedel odkial pokial vyplnat pole 1kou, 2kou, alebo 3kou
 		int indent_1 = limits[0] + limits[1];
 		int indent_2 = indent_1 + limits[2];
 
@@ -44,6 +46,7 @@ namespace testArrayList {
 
 
 	//vygeneruje rand cislo od 1 po range
+	//pouzita funkcia rand je zo stdlib
 	int gen_number(int range)
 	{
 		return rand() % range + 1;
@@ -53,15 +56,23 @@ namespace testArrayList {
 	void test_adt_list(int* arr) {
 		/*for (int i = 0; i < 100; i++)
 			newList.insertFirst(5);*/
+		
 		std::ofstream outfile("operation_times_arraylist.txt");
+		
 		int operation_no;
 		int randIndex;
+		
+		//inicializacie premennych pre funkciu casovania
 		auto t1 = std::chrono::high_resolution_clock::now();
 		auto t2 = std::chrono::high_resolution_clock::now();
 		auto int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
 		std::chrono::duration<double, std::milli> fp_ms;
 		std::chrono::duration<long, std::micro> int_usec;
+		
 		structures::List<int>* newList = new structures::ArrayList<int>;
+		
+		//cyklus, ide od nuly po milion, prechadza pole, v ktorom su ulozene uz random poprehadzovane
+		//ciselka a podla tychto ciselok sa vyberie operacia, resp. kategoria operacii, ktora sa ma vykonat
 		for (int i = 0; i < MIL; i++)
 		{
 			//cout << arr[i] << endl;
@@ -76,16 +87,19 @@ namespace testArrayList {
 
 			switch (arr[i]) {
 			case(1):
+				//vygeneruje cislo od jedna po 3, lebo 3 su operacie, ktore spadaju pod tuto kategoriu
 				operation_no = gen_number(3);
 				switch (operation_no) {
 				case(1):
 					//operacia_vloz_prvy(gen_number(range));
 					//cout << newList->size() << endl;
 					cout << "insertFirst" << endl;
+					//akutalny cas pred vykonanim operacie
 					t1 = std::chrono::high_resolution_clock::now();
 					newList->insertFirst(gen_number(10000));
+					//aktualny cas po vykonani operacie
 					t2 = std::chrono::high_resolution_clock::now();
-					fp_ms = t2 - t1;
+					//nemam sajnu ako toto funguje, to som skopcil :D
 					int_ms = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
 					int_usec = int_ms;
 					outfile << "insert_first:" << fp_ms.count() << "ms" << std::endl;
@@ -257,16 +271,20 @@ namespace testArrayList {
 		int* arr;
 		arr = new int[MIL];
 
+		//toto bolo tusim kvoli tomu hrkaniu, alebo random cislo, ale to uz je asi prec, ci ?
 		int n = sizeof(arr) / sizeof(arr[0]);
+		
 		structures::List<int>* newList = new structures::ArrayList<int>;
 
-		//0 - vloz, 1 - zrus, 2 - nastav, 3 - index
+		//vytvori 2d pole, riadky su jednotlive scenare, stlpce su podiely operacii
 		int pomery[3][4] = {
 				{15, 15, 60, 10},
 				{30, 30, 30, 10},
 				{40, 40, 5, 5}
 		};
-
+		
+		//vypocita, kolkokrat sa maju jednotlive operacie vykonat a prislusne pocty vyplni do rovnako velkeho
+		//pola limits
 		int limits[3][4];
 		for (int i = 0; i < 3; i++)
 		{
